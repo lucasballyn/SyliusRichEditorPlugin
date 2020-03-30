@@ -3,3 +3,7 @@ imports:
 
 monsieur_biz_sylius_rich_editor:
   upload_directory: '%kernel.project_dir%/public/media/rich-editor'
+
+twig:
+  paths:
+    '%kernel.project_dir%/templates': 'app'

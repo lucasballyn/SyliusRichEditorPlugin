@@ -69,6 +69,9 @@ class MbizRichEditorFields {
             let _self = this;
             // Init fields only when UI Elements are built
             this.container.addEventListener('uiElementsBuilt', function(e) {
+
+                _self.container.setAttribute('component-role', 'rich_editor_container');
+
                 _self.log('Ui Elements container is built', e);
                 _self.initFields();
                 _self.toggleUiElementsVisibility();

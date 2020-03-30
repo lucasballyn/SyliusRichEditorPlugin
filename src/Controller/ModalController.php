@@ -12,12 +12,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Twig\Environment;
 
 class ModalController extends AbstractController
 {
-    /** @var EngineInterface */
-    private $templatingEngine;
-
     /** @var UiElementFactoryInterface */
     private $uiElementFactory;
 
@@ -32,11 +30,9 @@ class ModalController extends AbstractController
      * @param TranslatorInterface $translator
      */
     public function __construct(
-        EngineInterface $templatingEngine,
         UiElementFactoryInterface $uiElementFactory,
         TranslatorInterface $translator
     ) {
-        $this->templatingEngine = $templatingEngine;
         $this->uiElementFactory = $uiElementFactory;
         $this->translator = $translator;
     }
@@ -71,7 +67,8 @@ class ModalController extends AbstractController
         // Create form depending on UI Element with data
         $form = $this->createForm($uiElement->getFormClass(), $data['fields']);
 
-        return $this->templatingEngine->renderResponse('@MonsieurBizSyliusRichEditorPlugin/Admin/Modal/edit.html.twig', [
+
+        return $this->render('@MonsieurBizSyliusRichEditorPlugin/Admin/Modal/edit.html.twig', [
             'form' => $form->createView(),
             'uiElement' => $uiElement,
             'data' => $data['fields'],

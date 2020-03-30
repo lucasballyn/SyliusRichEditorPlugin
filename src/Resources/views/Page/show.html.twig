@@ -1,0 +1,5 @@
+{% extends '@MonsieurBizSyliusRichEditorPlugin/Site/base.html.twig' %}
+
+{% block body %}
+    {{ page.blocks | mbiz_rich_editor_render }}
+{% endblock %}

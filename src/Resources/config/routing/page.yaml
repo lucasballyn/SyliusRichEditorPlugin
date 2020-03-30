@@ -1,0 +1,8 @@
+monsieurbiz_sylius_rich_editor_page:
+  path: /{slug}
+  methods: [GET]
+  requirements:
+    slug: "^(.)*$"
+  defaults:
+    _controller: MonsieurBiz\SyliusRichEditorPlugin\Controller\PageController::getPageForSlug
+

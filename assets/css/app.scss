@@ -146,14 +146,14 @@
     background: #fff;
     border-bottom: 1px solid rgba(34, 36, 38, .1);
     box-shadow: 0 2px 4px 0 rgba(34, 36, 38, .03);
-    opacity: 0;
+    display: none;
     visibility: hidden;
     transform: translateY(-100%);
     transition: max-height .5s ease, opacity .3s ease, visibility .3s ease, transform .5s ease;
 
     &.is-expanded {
         max-height: 150px;
-        opacity: 1;
+        display: block;
         visibility: visible;
         transform: translateY(0);
         z-index: 100;
@@ -190,6 +190,16 @@
             left: calc(50% - 2px);
             transform: rotate(45deg);
         }
+    }
+}
+
+[component-role="rich_editor_container"]{
+
+    position: relative;
+
+    > #mbiz-rich-editor-elements-container {
+        position: fixed;
+        top: 0;
     }
 }
 
