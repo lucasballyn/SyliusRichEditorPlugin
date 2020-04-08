@@ -11,6 +11,10 @@ class Image extends AbstractUiElement
 {
     protected $type = 'image';
 
+    public function getIcon() : string
+    {
+        return 'fa-image';
+    }
     public function getImage(): string
     {
         return '/bundles/monsieurbizsyliusricheditorplugin/images/ui_elements/image.svg';

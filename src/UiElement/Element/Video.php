@@ -16,6 +16,11 @@ class Video extends AbstractUiElement
         return '/bundles/monsieurbizsyliusricheditorplugin/images/ui_elements/video.svg';
     }
 
+    public function getIcon(): string
+    {
+        return 'fa-file-video';
+    }
+
     public function getFields(): array
     {
         return ['video', 'image'];

@@ -2,11 +2,11 @@
 
 namespace MonsieurBiz\SyliusRichEditorPlugin\Form\Type;
 
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 
-class RichEditorType extends TextAreaType
+class RichEditorType extends TextType
 {
     /**
      * {@inheritdoc}

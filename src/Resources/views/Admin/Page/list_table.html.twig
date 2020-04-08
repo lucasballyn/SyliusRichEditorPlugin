@@ -1,0 +1,25 @@
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Titel</th>
+        <th>Route</th>
+        <th>Acties</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for page in pages %}
+        <tr>
+            <td>{{ page.title }}</td>
+            <td>{{ page.slugDisplay }}</td>
+            <td>
+                <a href="{{ path('monsieurbiz_sylius_rich_editor_page_show', {'id': page.id}) }}">show</a>
+                <a href="{{ path('monsieurbiz_sylius_rich_editor_page_edit', {'id': page.id}) }}">edit</a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="3">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

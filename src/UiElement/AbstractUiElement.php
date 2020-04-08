@@ -76,6 +76,7 @@ abstract class AbstractUiElement implements UiElementInterface
             'description' => $this->getDescription(),
             'title' => $this->getTitle(),
             'image' => $this->getImage(),
+            'icon' => $this->getIcon(),
             'fields' => $this->getFields(),
         ];
     }
@@ -88,5 +89,10 @@ abstract class AbstractUiElement implements UiElementInterface
     public function getImage(): string
     {
         return '/bundles/monsieurbizsyliusricheditorplugin/images/ui_elements/default.svg';
+    }
+
+    public function getIcon(): string
+    {
+        return 'fa-cube';
     }
 }

@@ -53,6 +53,7 @@ class MbizRichEditorFields {
             toggleButton: 'mbiz-rich-editor-toggle-button',
             closeButton: 'mbiz-rich-editor-close-button',
             renderedModal: 'mbiz-rich-editor-rendred-modal',
+            dropableContainerHeader: 'mbiz-rich-editor-draggable-container-header'
         };
         this.events = {
             uiElementsBuilt: new Event('uiElementsBuilt'),
@@ -92,11 +93,22 @@ class MbizRichEditorFields {
         // Init container
         const uiElementsContainer = document.createElement('div');
         uiElementsContainer.id = this.id.uiElementsContainer;
-        uiElementsContainer.classList.add(this.classes.dropableContainer, this.classes.uiElementList);
+        uiElementsContainer.classList.add(this.classes.dropableContainer, this.classes.uiElementList, 'shadow');
 
         // Init close container button
-        const uiElementsContainerClose = `<button type="button" class="${this.classes.closeButton} ${this.classes.toggleButton}">${this.translations.close}</button>`;
-        uiElementsContainer.insertAdjacentHTML('beforeend', uiElementsContainerClose);
+        // const uiElementsContainerClose = `<button type="button" class="${this.classes.closeButton} ${this.classes.toggleButton}">${this.translations.close}</button>`;
+        // uiElementsContainer.insertAdjacentHTML('beforeend', uiElementsContainerClose);
+
+        const uiElementContainterHeader = `
+            <span class="${this.classes.dropableContainerHeader}">
+                <span class="title">Blokken</span>
+                <button class="${this.classes.closeButton} ${this.classes.toggleButton}">
+                   <i class="fas fa-times"></i>
+                </button>
+            </span>
+        `;
+
+        uiElementsContainer.insertAdjacentHTML('beforeend', uiElementContainterHeader);
 
         // Init container inner
         const uiElementsContainerInner = document.createElement('div');
@@ -575,11 +587,11 @@ class MbizRichEditorFields {
             <button class="${this.classes.draggableItemHandler}" type="button">${this.translations.move}</button>
             <div class="${this.classes.draggableItemInner}">
                 <div class="${this.classes.draggableItemImg}">
-                    <img src="${uiElementMetaData.image}" alt="" width="90" height="90">
+                    <i class="fas ${uiElementMetaData.icon} mb-2"></i>
                 </div>
                 <div class="${this.classes.draggableItemContent}">
                     <div class="${this.classes.draggableItemInfos}">
-                        <h2 class="${this.classes.draggableItemTitle}">${uiElementMetaData.title}</h2>
+                        <span class="${this.classes.draggableItemTitle}">${uiElementMetaData.title}</span>
                         <p>${uiElementMetaData.description}</p>
                     </div>
                     <div class="${this.classes.draggableItemActions}">

@@ -16,6 +16,11 @@ class Quote extends AbstractUiElement
         return '/bundles/monsieurbizsyliusricheditorplugin/images/ui_elements/quote.svg';
     }
 
+    public function getIcon(): string
+    {
+        return 'fa-quote-right';
+    }
+
     public function getFields(): array
     {
         return ['author', 'content'];

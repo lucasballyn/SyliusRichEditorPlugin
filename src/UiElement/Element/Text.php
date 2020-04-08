@@ -16,6 +16,11 @@ class Text extends AbstractUiElement
         return '/bundles/monsieurbizsyliusricheditorplugin/images/ui_elements/text.svg';
     }
 
+    public function getIcon(): string
+    {
+        return 'fa-paragraph';
+    }
+
     public function getFields(): array
     {
         return ['content'];

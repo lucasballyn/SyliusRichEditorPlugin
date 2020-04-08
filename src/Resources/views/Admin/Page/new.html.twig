@@ -1,9 +1,5 @@
 {% extends '@MonsieurBizSyliusRichEditorPlugin/Admin/base.html.twig' %}
 
 {% block body %}
-    <h1>Create new Page</h1>
-
     {{ include('@MonsieurBizSyliusRichEditorPlugin/Admin/Page/_form.html.twig') }}
-
-    <a href="{{ path('monsieurbiz_sylius_rich_editor_page_index') }}">back to list</a>
 {% endblock %}

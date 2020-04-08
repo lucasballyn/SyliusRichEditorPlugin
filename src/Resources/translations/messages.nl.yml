@@ -1,13 +1,21 @@
 monsieurbiz_richeditor_plugin:
+  ui:
+    blocks: Blokken
   ui_element:
+    gmap:
+      title: 'Google maps'
+      short_description: 'Google Maps blok'
+      description: 'Voegt een Google Maps blok toe aan de pagina'
+      field:
+        content: 'Google Maps URL'
     text:
-      title: 'Text'
+      title: 'Tekst'
       short_description: 'Short description of text element'
       description: 'An element with a text content'
       field:
         content: 'Content'
     image:
-      title: 'Image'
+      title: 'Afbeelding'
       short_description: 'Short description of image element'
       description: 'An element with an image, an alternative text and a title'
       field:
@@ -39,12 +47,12 @@ monsieurbiz_richeditor_plugin:
     confirm_delete: 'Are you sure to delete this element ?'
     apply_changes: 'Apply changes'
     cancel_changes: 'Cancel changes'
-    placeholder: 'Drag widgets in this area'
+    placeholder: 'Sleep de blokken die je op de pagina wil op dit vlak.'
     current_image: 'Current image'
     current_video: 'Current video'
     current_file: 'Current file'
   action:
-    new: 'Toggle available widgets'
+    new: 'Toon blokken    '
     preview: 'Preview'
   error:
     cannot_parse_json: 'Cannot parse the current content'

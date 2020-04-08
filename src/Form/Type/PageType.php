@@ -26,7 +26,7 @@ class PageType extends AbstractType
                 'empty_data' => null
             ])
             ->add('blocks', RichEditorType::class, [
-                'label' => 'app.ui.blocks',
+                'label' => 'monsieurbiz_richeditor_plugin.ui.blocks',
             ]);
     }
 

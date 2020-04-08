@@ -137,12 +137,12 @@
 // --------------------------------------------------------------------------
 
 .mbiz-rich-editor-dropable-container {
+
     position: sticky;
     top: 56px;
     z-index: 100;
     width: calc(100% + calc(12px * 2));
-    max-height: 0;
-    margin: -8px -12px 0;
+    margin: 0;
     background: #fff;
     border-bottom: 1px solid rgba(34, 36, 38, .1);
     box-shadow: 0 2px 4px 0 rgba(34, 36, 38, .03);
@@ -152,44 +152,91 @@
     transition: max-height .5s ease, opacity .3s ease, visibility .3s ease, transform .5s ease;
 
     &.is-expanded {
-        max-height: 150px;
         display: block;
         visibility: visible;
         transform: translateY(0);
         z-index: 100;
     }
 
-    .mbiz-rich-editor-close-button {
-        @extend %text-hide;
-        @extend %btn-unstyled;
+    .mbiz-rich-editor-draggable-container-header{
+        display: flex;
+        align-items: center !important;
+        justify-content: space-between;
+        padding: 1rem;
+        border-bottom: 1px solid #e5e5e5;
+        margin-bottom: 1rem;
 
-        position: absolute;
+        span.title{
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+    }
+
+    .mbiz-rich-editor-dropable-container-inner{
+
+        height: 100%;
+
+        .mbiz-rich-editor-draggable-item {
+
+            flex: 0 50%;
+            float: left;
+            padding: 10px !important;
+            height: 175px;
+            width: 175px;
+            background: none;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            color: #444444;
+            display: block;
+
+
+            .mbiz-rich-editor-draggable-item-inner {
+                padding: 5px;
+                display: flex;
+                flex-direction: column;
+                background: #fff;
+                border: 1px solid #e5e5e5;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+            }
+
+            .mbiz-rich-editor-draggable-item-img{
+                font-size: 30px;
+                margin: 0;
+                width: auto;
+                height: auto;
+            }
+
+            .mbiz-rich-editor-draggable-item-content{
+                width: auto;
+                height: auto;
+                flex: 0;
+            }
+
+            .mbiz-rich-editor-draggable-item-handler::before, .mbiz-rich-editor-draggable-item-handler::after{
+                width: 0;
+            }
+
+            .mbiz-rich-editor-draggable-item-infos{
+                p{
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .mbiz-rich-editor-close-button {
+
         top: 100%;
         right: 20px;
         z-index: 10;
         width: 30px;
         height: 30px;
         background: #fff;
-        border: 1px solid rgba(34, 36, 38, .1);
-        border-width: 0 1px 1px;
-        box-shadow: 0 2px 4px 0 rgba(34, 36, 38, .03);
-
-        &::before,
-        &::after {
-            position: absolute;
-            top: calc(50% - calc(2px / 2));
-            left: calc(50% - calc(40% / 2) - 3px);
-            width: 40%;
-            height: 2px;
-            background: #333;
-            transform: rotate(-45deg);
-            content: "";
-        }
-
-        &::after {
-            left: calc(50% - 2px);
-            transform: rotate(45deg);
-        }
+        border: none;
     }
 }
 
@@ -197,27 +244,16 @@
 
     position: relative;
 
-    > #mbiz-rich-editor-elements-container {
+    #mbiz-rich-editor-elements-container {
         position: fixed;
         top: 0;
-    }
-}
+        height: 100vh;
+        max-width: 350px;
+        right: 0;
 
-.mbiz-rich-editor-dropable-container-inner {
-    display: flex;
-    width: 100%;
-    max-height: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    transition: max-height .5s ease;
-
-    .is-expanded & {
-        max-height: 150px;
-    }
-
-    > * {
-        margin: 1em !important;
-        min-width: 300px;
+        &.is-expanded{
+            height: 100vh;
+        }
     }
 }
 
