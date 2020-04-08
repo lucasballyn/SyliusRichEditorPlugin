@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace MonsieurBiz\SyliusRichEditorPlugin\Twig;
 
 use MonsieurBiz\SyliusRichEditorPlugin\Event\RenderUiElementEvent;
+use MonsieurBiz\SyliusRichEditorPlugin\Exception\UiElementNotFoundException;
 use MonsieurBiz\SyliusRichEditorPlugin\Exception\UndefinedUiElementTypeException;
 use MonsieurBiz\SyliusRichEditorPlugin\Factory\UiElementFactoryInterface;
 use Twig\Extension\AbstractExtension;
@@ -64,35 +65,30 @@ final class RichEditorExtension extends AbstractExtension
     public function renderRichEditorField(string $content)
     {
         $elements = json_decode($content, true);
-        
+
         if (!is_array($elements)) {
             return $content;
         }
 
-        $html = '';
+        $blockHtml = [];
         foreach ($elements as $element) {
+
             if (!isset($element['type'])) {
                 continue;
             }
 
             try {
                 $uiElement = $this->uiElementFactory->getUiElementByType($element['type']);
-            } catch (UndefinedUiElementTypeException $exception) {
+            } catch (UiElementNotFoundException $exception) {
                 continue;
             }
 
-            $template = $uiElement->getTemplate();
-
             $event = new RenderUiElementEvent($uiElement, $element);
             $this->eventDispatcher->dispatch($event);
-            $element = $event->getElement();
 
-            $html .= $this->twig->render($template, [
-                'uiElement' => $uiElement,
-                'element' => $element['fields'],
-            ]);
+            $blockHtml[] = $event->getUiElement()->render();
         }
 
-        return $html;
+        return implode('', $blockHtml);
     }
 }

@@ -10,7 +10,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 interface UiElementInterface extends \JsonSerializable
 {
-    public function __construct(TranslatorInterface $translator);
     public function getType(): string;
     public function getShortDescription(): string;
     public function getDescription(): string;
@@ -20,4 +19,6 @@ interface UiElementInterface extends \JsonSerializable
     public function getFormClass(): string;
     public function getTemplate(): string;
     public function getIcon(): string;
+    public function setData($data);
+    public function render();
 }

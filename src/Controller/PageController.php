@@ -54,7 +54,7 @@ class PageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('monsieurbiz_sylius_rich_editor_page_index');
+            return $this->redirectToRoute('monsieurbiz_sylius_rich_editor_page_edit', ["id" => $page->getId()]);
         }
 
         return $this->render('@MonsieurBizSyliusRichEditorPlugin/Admin/Page/edit.html.twig', [

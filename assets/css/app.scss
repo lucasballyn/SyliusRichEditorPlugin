@@ -114,6 +114,8 @@
 }
 
 
+
+
 // Placeholders
 // --------------------------------------------------------------------------
 
@@ -131,7 +133,6 @@
     border: 0;
     cursor: pointer;
 }
-
 
 // Dropable container
 // --------------------------------------------------------------------------
@@ -211,13 +212,16 @@
             }
 
             .mbiz-rich-editor-draggable-item-content{
+                text-align: center;
                 width: auto;
                 height: auto;
                 flex: 0;
             }
 
-            .mbiz-rich-editor-draggable-item-handler::before, .mbiz-rich-editor-draggable-item-handler::after{
-                width: 0;
+            .mbiz-rich-editor-draggable-item-handler {
+                &:before, &:after{
+                    width: 0;
+                }
             }
 
             .mbiz-rich-editor-draggable-item-infos{

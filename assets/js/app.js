@@ -1,6 +1,7 @@
 import dragula from 'dragula';
 import tingle from 'tingle.js';
 import { exec, init } from 'pell'
+import './collection-form'
 
 /**
  * Class to manage Rich editor fields with UI Elements
@@ -362,6 +363,7 @@ class MbizRichEditorFields {
             closeLabel: this.translations.close,
             onOpen: function() {
                 _self.initWysiwyg(modal.modalBoxContent);
+                _self.initCollectionForm(modal.modalBoxContent);
             },
         });
 
@@ -432,6 +434,14 @@ class MbizRichEditorFields {
         return form;
     }
 
+    initCollectionForm(container){
+
+        const targets = container.querySelectorAll('[data-form-type="collection"]');
+
+        for(let target of targets){
+            $(target).CollectionForm();
+        }
+    };
     /**
      * Init wysiwyg with form content data
      *

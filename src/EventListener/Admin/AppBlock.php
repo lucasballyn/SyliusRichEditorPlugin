@@ -37,7 +37,7 @@ class AppBlock
         $block->setId(uniqid('', true));
         $block->setSettings(array_replace($event->getSettings(), [
             'template' => $this->template,
-            'attr' => ['ui_elements' => $this->uiElementFactory->getUiElements(), 'debug' => true]
+            'attr' => ['ui_elements' => $this->uiElementFactory->getUiElements(), 'debug' => false ]
         ]));
         $block->setType('sonata.block.service.template');
 

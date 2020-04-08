@@ -23,7 +23,7 @@ class Text extends AbstractUiElement
 
     public function getFields(): array
     {
-        return ['content'];
+        return ['content', 'title'];
     }
 
     public function getFormClass(): string

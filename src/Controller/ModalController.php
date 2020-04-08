@@ -84,6 +84,7 @@ class ModalController extends AbstractController
     public function submitAction(Request $request): Response
     {
         $uiElementType = $request->request->get('uiElementType');
+
         if (!$request->isXmlHttpRequest() || empty($uiElementType)) {
             throw $this->createNotFoundException();
         }
@@ -121,8 +122,8 @@ class ModalController extends AbstractController
         $element = new \stdClass();
         $element->type = $uiElement->getType();
         $element->fields = new \stdClass();
+
         foreach ($uiElement->getFields() as $field) {
-            // If file, upload it and retrieve the path
             if (($file = $request->files->get($uiElementType)) && isset($file[$field])) {
                 $element->fields->{$field} = $this->uploadAndReturnPath($file[$field]);
             // Value in form exists, we take it

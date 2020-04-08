@@ -31,6 +31,8 @@ class RenderUiElementEvent extends Event
     ) {
         $this->uiElement = $uiElement;
         $this->element = $element;
+
+        $this->uiElement->setData($element);
     }
 
     /**

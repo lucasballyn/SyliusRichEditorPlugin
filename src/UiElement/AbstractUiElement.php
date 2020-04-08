@@ -6,6 +6,7 @@ namespace MonsieurBiz\SyliusRichEditorPlugin\UiElement;
 
 use MonsieurBiz\SyliusRichEditorPlugin\Exception\UndefinedUiElementTypeException;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Twig\Environment;
 
 abstract class AbstractUiElement implements UiElementInterface
 {
@@ -13,18 +14,20 @@ abstract class AbstractUiElement implements UiElementInterface
 
     protected $type = '';
 
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    protected $data = [];
+
+    protected $translator;
+
+    protected Environment $twig;
 
     /**
      * AbstractUiElement constructor.
      * @param TranslatorInterface $translator
      */
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(TranslatorInterface $translator, Environment $twig)
     {
         $this->translator = $translator;
+        $this->twig = $twig;
     }
 
     /**
@@ -58,6 +61,11 @@ abstract class AbstractUiElement implements UiElementInterface
         return $this->getTranslation('short_description');
     }
 
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
+
     public function getDescription(): string
     {
         return $this->getTranslation('description');
@@ -67,6 +75,14 @@ abstract class AbstractUiElement implements UiElementInterface
     {
         $translationKey = sprintf('%s.%s.%s', self::TRANSLATION_PREFIX, $this->getType(), $key);
         return $this->getTranslator()->trans($translationKey) ?? $translationKey;
+    }
+
+    public function render() : string
+    {
+        return $this->twig->render($this->getTemplate(), [
+            'uiElement' =>  $this,
+            'element' => $this->data['fields'],
+        ]);
     }
 
     public function jsonSerialize(): array
